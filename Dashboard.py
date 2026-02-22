@@ -837,8 +837,8 @@ try:
         spss_ms = extract_spss_model_summary(frames)
         spss_an = extract_spss_anova(frames)
         spss_coef, spss_vif = extract_spss_coefficients_and_vif(frames)
-except Exception:
-    pass
+except Exception as e:
+    st.error(f"Gagal membaca file OUTPUT.xls: {e}")
 
 # =========================
 # LOAD PROFIL (opsional)
@@ -1045,3 +1045,4 @@ with tabD:
     else:
         st.write("boot_df shape:", boot_df.shape)
         st.dataframe(boot_df.head(120), use_container_width=True)
+
